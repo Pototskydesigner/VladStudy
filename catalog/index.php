@@ -1,7 +1,33 @@
 <?
 define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+
+$pageElementCount = $arParams["PAGE_ELEMENT_COUNT"];
+if (array_key_exists("showBy", $_REQUEST)) {
+	if ( intVal($_REQUEST["showBy"]) && in_array(intVal($_REQUEST["showBy"]), array(1, 2, 3, 4)) ) {
+		$pageElementCount = intVal($_REQUEST["showBy"]);
+		$_SESSION["showBy"] = $pageElementCount;
+	} elseif ($_SESSION["showBy"]) {
+		$pageElementCount = intVal($_SESSION["showBy"]);
+	}
+}
 ?>
+<? if ($APPLICATION->GetCurPage(false) !== '/catalog/'): ?>
+
+	<div class="show_number">
+		<span class="show_title">Показать по </span>
+		<span class="number_list">
+        <? for( $i = 1; $i <= 4; $i+=1 ) : ?>
+			<a rel="nofollow" <? if ($i == $pageElementCount): ?>class="current"<? endif; ?>
+                 href="<?= $APPLICATION->GetCurPageParam('showBy='.$i, array('showBy', 'mode')) ?>"
+			>
+                <span><?= $i ?></span>
+            </a>
+		<? endfor; ?>
+    </span>
+	</div>
+
+<? endif; ?>
 <?$APPLICATION->IncludeComponent("bitrix:catalog", "bootstrap_v4", array(
 	"IBLOCK_TYPE" => "catalog",
 	"IBLOCK_ID" => "2",
@@ -55,7 +81,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 	"SECTION_TOP_DEPTH" => "1",
 	"SECTIONS_VIEW_MODE" => "TILE",
 	"SECTIONS_SHOW_PARENT_NAME" => "N",
-	"PAGE_ELEMENT_COUNT" => "18",
+	"PAGE_ELEMENT_COUNT" => $pageElementCount ?? 3 ,
 	"LINE_ELEMENT_COUNT" => "3",
 	"ELEMENT_SORT_FIELD" => "desc",
 	"ELEMENT_SORT_ORDER" => "asc",
