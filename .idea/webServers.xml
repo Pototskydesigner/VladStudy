@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="d644aa04-87b0-477d-a4de-907cf3942ef6" name="EndBykeShop">
-        <fileTransfer rootFolder="/home/bitrix/www" accessType="SFTP" host="192.168.43.215" port="22" sshConfigId="86047344-d3b8-402c-bd66-097dc8033380" sshConfig="bitrix@192.168.43.215:22 password">
+      <webServer id="615fb6c0-3b86-4e8a-8b86-e346af91c299" name="StekTest">
+        <fileTransfer rootFolder="/home/bitrix/www" accessType="SFTP" host="194.190.151.5" port="32102" sshConfigId="5a432130-b817-413b-9a97-c33621f5c07d" sshConfig="bitrix@194.190.151.5:32102 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

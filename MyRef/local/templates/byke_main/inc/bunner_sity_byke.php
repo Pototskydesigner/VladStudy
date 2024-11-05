@@ -1,0 +1,1 @@
+<img alt="ride-us-pic" src="/local/templates/byke_main/img/ride-with-us-bycicle.jpg"> <a href="/catalog/t-shirts/">по городу</a>
